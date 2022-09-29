@@ -15,7 +15,7 @@ public class ViewDepartmentUseCase {
 
 	public static void main(String[] args) {
 		
-Scanner sc= new Scanner(System.in);
+        Scanner sc= new Scanner(System.in);
 		
 		System.out.println("Enter Department id :");
 		int dId = sc.nextInt();

@@ -29,7 +29,7 @@ public class DepartmentDaoImpl implements DepartmentDao {
 				message="New department added Succuessfully.";
 			
 			
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			
 			message=e.getMessage();
 			
@@ -73,6 +73,32 @@ public class DepartmentDaoImpl implements DepartmentDao {
 		
 		
 		return department;
+		
+	}
+
+	@Override
+	public String upadateDepartment(int dId ,String dName) {
+		
+		String message =" not updated ";
+		
+		try(Connection conn =DBUtil.provideConnection()){
+			
+            PreparedStatement ps=conn.prepareStatement("update department set dName =? where dId=?");
+			
+            ps.setString(1, dName);
+			ps.setInt(2,dId);
+			
+			
+			int x =ps.executeUpdate();
+			
+			if(x>0)
+				message ="Department name updated successfully.";
+			
+		} catch (SQLException e) {
+			message=e.getMessage();
+		}
+	
+		return message;
 		
 	}
 

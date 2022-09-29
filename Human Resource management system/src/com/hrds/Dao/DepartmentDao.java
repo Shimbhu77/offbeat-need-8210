@@ -9,5 +9,8 @@ public interface DepartmentDao {
 	
 	public Department viewDepartment(int dId) throws DepartmentException;
 	
+	public String upadateDepartment(int dId,String dName);
+	
+	
 	
 }

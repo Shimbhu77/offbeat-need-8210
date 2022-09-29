@@ -5,7 +5,7 @@ import com.hrds.exceptions.AdminException;
 
 public interface AdminDao {
 	
-	public Admin loginAdmin(String email,String passwrod)throws AdminException;
+	public Admin loginAdmin(String email,String password)throws AdminException;
 	
 
 }
