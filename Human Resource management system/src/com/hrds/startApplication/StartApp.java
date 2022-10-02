@@ -8,11 +8,14 @@ import com.hrds.Dao.EmployeeDaoImpl;
 import com.hrds.usecase.AddDepartmentUseCase;
 import com.hrds.usecase.AddEmployeeUseCase;
 import com.hrds.usecase.AdminLoginUseCase;
+import com.hrds.usecase.ApplyLeaveRequestUseCase;
 import com.hrds.usecase.ChangeEmployeePasswordUseCase;
 import com.hrds.usecase.EmployeeLoginUseCase;
 import com.hrds.usecase.GrantLeaveUseCase;
 import com.hrds.usecase.UpdateDepartmentUseCase;
 import com.hrds.usecase.UpdateEmployeeProfileUseCase;
+import com.hrds.usecase.ViewAllDepartmentUseCase;
+import com.hrds.usecase.ViewDepartmentEmployeeUseCase;
 import com.hrds.usecase.ViewDepartmentUseCase;
 import com.hrds.usecase.ViewEmployeeProfileUseCase;
 import com.hrds.usecase.TransferEmployeeDepartmentUseCase;
@@ -37,7 +40,7 @@ public class StartApp {
 			System.out.println("2. Login as Employee");
 			System.out.println("3. Exit Application");
 			
-			System.out.println("Enter a number 1 or 2 or 3");
+			System.out.println("Enter a number ");
 			
 			int login=sc.nextInt();
 			
@@ -50,11 +53,12 @@ public class StartApp {
 				{
 				System.out.println("1. Add new Department ");
 				System.out.println("2. View department by id ");
-				System.out.println("3. Update department by id");
-				System.out.println("4. Add new Employee and give password ");
-				System.out.println("5. Transfer Employee Department");
-				System.out.println("6. GrantLeave request of Employee");
-				System.out.println("7. Logout");
+				System.out.println("3. View All Employees of department by id ");
+				System.out.println("4. Update department by id");
+				System.out.println("5. Add new Employee and give password ");
+				System.out.println("6. Transfer Employee Department");
+				System.out.println("7. GrantLeave request of Employee");
+				System.out.println("8. Logout");
 				
 				System.out.println("Enter a number");
 			    int num2=sc.nextInt();
@@ -69,29 +73,35 @@ public class StartApp {
 			        }
 			        case 2:
 			        {
-			        	ViewDepartmentUseCase viewDeparment =new ViewDepartmentUseCase();
+			        	ViewAllDepartmentUseCase viewDeparment =new ViewAllDepartmentUseCase();
 			        	viewDeparment.main(args);
 			        	break;
 			        }
 			        case 3:
 			        {
+			        	ViewDepartmentEmployeeUseCase viewDepartmentEmployees =new ViewDepartmentEmployeeUseCase();
+			        	viewDepartmentEmployees.main(args);
+			        	break;
+			        }
+			        case 4:
+			        {
 			        	UpdateDepartmentUseCase updateDeparment =new UpdateDepartmentUseCase();
 			        	updateDeparment.main(args);
 			        	break;
 			        }
-			        case 4:
+			        case 5:
 			        {
 			        	AddEmployeeUseCase addEmployeeUseCase =new AddEmployeeUseCase();
 			        	addEmployeeUseCase.main(args);
 			        	break;
 			        }
-			        case 5:
+			        case 6:
 			        {
 			        	TransferEmployeeDepartmentUseCase transferEmployeeDepartmentUseCase =new TransferEmployeeDepartmentUseCase();
 			        	transferEmployeeDepartmentUseCase.main(args);
 			        	break;
 			        }
-			        case 6:
+			        case 7:
 			        {
 			        	GrantLeaveUseCase grantLeaveUseCase =new GrantLeaveUseCase();
 			        	grantLeaveUseCase.main(args);
@@ -105,7 +115,8 @@ public class StartApp {
 			        }
 
 			    }
-			    
+			    System.out.println("-------------------------------------------");
+			    System.out.println("-------------------------------------------");
 				} 
 			
 			}
@@ -148,7 +159,7 @@ public class StartApp {
 			        }
 			        case 4:
 			        {
-			        	GrantLeaveUseCase grantLeaveUseCase =new GrantLeaveUseCase();
+			        	ApplyLeaveRequestUseCase grantLeaveUseCase =new ApplyLeaveRequestUseCase();
 			        	grantLeaveUseCase.main(args);
 			        	break;
 			        }
@@ -160,6 +171,8 @@ public class StartApp {
 			        }
 
 			    }
+			    System.out.println("-------------------------------------------");
+			    System.out.println("-------------------------------------------");
 			    
 				} 
 		

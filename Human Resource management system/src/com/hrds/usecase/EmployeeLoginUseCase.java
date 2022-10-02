@@ -29,7 +29,7 @@ public class EmployeeLoginUseCase {
 			Employee employee = dao.loginEmployee(email,pass);
 			
 			System.out.println("Welcome  , Hi "+employee.geteEmail());
-			System.out.println(employee);
+			System.out.println("Your employee id is "+employee.geteId());
 			
 		} catch (EmployeeException e) {
 			

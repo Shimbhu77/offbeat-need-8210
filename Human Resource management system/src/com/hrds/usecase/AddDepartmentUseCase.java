@@ -16,17 +16,17 @@ public class AddDepartmentUseCase {
 		
         Scanner sc= new Scanner(System.in);
 		
-		System.out.println("Enter Department Id :");
-		int dId = sc.nextInt();
-		sc.nextLine();
+//		System.out.println("Enter Department Id :");
+//		int dId = sc.nextInt();
+//		sc.nextLine();
 		
-		System.out.println("Enter Department Name :");
+		System.out.println("Create Department Name :");
 		String dName = sc.next();
 		
 		DepartmentDao dao=new DepartmentDaoImpl();
 		Department department =new Department();
 		
-		department.setdId(dId);
+//		department.setdId(dId);
 		department.setdName(dName);
 		
 		String result =dao.addDepartment(department);

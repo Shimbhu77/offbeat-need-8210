@@ -33,12 +33,16 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			
 			if(rs.next())
 			{
+				String dName=rs.getString("dName");
+				System.out.println("department name is "+dName+" id is "+dId);
 				
-				PreparedStatement ps= conn.prepareStatement("insert into employee(eEmail, ePassword ,eSalary) values(?,?,?)");
+				PreparedStatement ps= conn.prepareStatement("insert into employee(eEmail, ePassword ,eSalary,eDId ,eDName) values(?,?,?,?,?)");
 				
 				ps.setString(1, employee.geteEmail());
 				ps.setString(2, employee.getePassword());
 				ps.setInt(3, employee.geteSalary());
+				ps.setInt(4,dId);
+				ps.setString(5,dName);
 				
 				int x= ps.executeUpdate();
 				
@@ -71,7 +75,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 					{
 						message="new employee added in a department successfully ";
 					}	
-					
+			
 				}
 				else
 				{
@@ -99,7 +103,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		
 		String message ="unable to transfer employee department";
 		
-try(Connection conn =DBUtil.provideConnection()){
+        try(Connection conn =DBUtil.provideConnection()){
 			
             PreparedStatement ps=conn.prepareStatement("update department_employee set dId =? where eId=?");
 			
@@ -111,6 +115,30 @@ try(Connection conn =DBUtil.provideConnection()){
 			
 			if(x>0)
 				message ="Transfer Department of employee successfully.";
+            
+			PreparedStatement ps2=conn.prepareStatement("select dName from department where dId =?");
+			
+            ps2.setInt(1, dId);
+            ResultSet rs=ps2.executeQuery();
+            
+            String name=null;
+            if(rs.next())
+            {
+            	name =rs.getString("dName");
+//            	System.out.println("name updated");
+            }
+			
+            PreparedStatement ps1=conn.prepareStatement("update employee set eDId =? ,eDName= ? where eId=?");
+			
+            ps1.setInt(1, dId);
+            ps1.setString(2, name);
+			ps1.setInt(3,eId);
+            int y =ps1.executeUpdate();
+			
+//			if(y>0)
+//			{
+//				System.out.println("employee table updated successfully.");
+//			}
 			
 		} catch (SQLException e) {
 			message=e.getMessage();
@@ -159,8 +187,10 @@ try(Connection conn =DBUtil.provideConnection()){
 				String a= rs.getString("eAddress");
 				String m= rs.getString("eMobile");
 				int s= rs.getInt("eSalary");
+				int edid= rs.getInt("eDId");
+				String edn= rs.getString("eDName");
 				
-				employee =new Employee(id,n,e,p,a,m,s);
+				employee =new Employee(id,n,e,p,a,m,s,edid,edn);
 			}
 			else
 			{
@@ -199,8 +229,10 @@ try(Connection conn =DBUtil.provideConnection()){
 				String a= rs.getString("eAddress");
 				String m= rs.getString("eMobile");
 				int s= rs.getInt("eSalary");
+				int edid= rs.getInt("eDId");
+				String edn= rs.getString("eDName");
 				
-				employee =new Employee(id,n,e,p,a,m,s);
+				employee =new Employee(id,n,e,p,a,m,s,edid,edn);
 			}
 			else
 			{
@@ -245,16 +277,17 @@ try(Connection conn =DBUtil.provideConnection()){
 	}
 
 	@Override
-	public String changePassword(int eId, String ePassword) {
+	public String changePassword(int eId, String ePassword,String eEmail) {
 		
 		 String message ="Password not changed ";
 			
 			try(Connection conn =DBUtil.provideConnection()){
 				
-	            PreparedStatement ps=conn.prepareStatement("update employee set ePassword =? where eId=?");
+	            PreparedStatement ps=conn.prepareStatement("update employee set ePassword =? where eId=? and eEmail=?");
 				
 	            ps.setString(1, ePassword);
 	            ps.setInt(2,eId);
+	            ps.setString(3, eEmail);
 				
 				
 				int x =ps.executeUpdate();
@@ -271,19 +304,31 @@ try(Connection conn =DBUtil.provideConnection()){
 	}
 
 	@Override
-	public String applyLeave(String request) {
+	public String applyLeave(String request,int id) {
 		
         String message=" not applied for Leave request";
 		
-        if(request!=null)
-        {
-        	message="applied for leave request";
-        }
-		
+		try(Connection conn =DBUtil.provideConnection()){
+			
+            PreparedStatement ps=conn.prepareStatement("insert into leaveRequest values(?,?)");
+			
+            ps.setString(1, request);
+            ps.setInt(2, id);
+			
+			int x =ps.executeUpdate();
+			
+			if(x>0)
+				message ="applied for leave request successfully.";
+			
+		} catch (SQLException e) {
+			message=e.getMessage();
+		}
+	
 		return message;
 		
 		
+		
+		
 	}
-
 	
 }

@@ -16,13 +16,13 @@ public class AddEmployeeUseCase {
 		
 		    Scanner sc= new Scanner(System.in);
 			
-			System.out.println("Enter Employee Email :");
+			System.out.println("Create Employee Email :");
 		    String eEmail= sc.nextLine();
 			
-			System.out.println("Enter Employee Password :");
+			System.out.println("Create Employee Password :");
 			String ePassword = sc.nextLine();
 			
-			System.out.println("Enter Employee Salary :");
+			System.out.println("Create Employee Salary :");
 			int eSalary = sc.nextInt();
 			
 			System.out.println("Enter Department Id for assigning employeee :");

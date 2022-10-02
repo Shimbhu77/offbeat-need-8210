@@ -1,41 +1,60 @@
 package com.hrds.bean;
 
-public class Employee {
-
+public class DepartmentEmployee {
+	
+	private int dId;
+	private String dName;
 	private int eId;
 	private String eName;
 	private String eEmail;
-	private String ePassword;
 	private String eAddress;
 	private String eMobile;
 	private int eSalary;
-	private int eDId;
-	private String eDName;
 	
 	
-	public Employee() {
+	
+	public DepartmentEmployee() {
 		super();
 	}
 
 
-	
 
-
-	public Employee(int eId, String eName, String eEmail, String ePassword, String eAddress, String eMobile,
-			int eSalary, int eDId, String eDName) {
+	public DepartmentEmployee(int dId, String dName, int eId, String eName, String eEmail, String eAddress,
+			String eMobile, int eSalary) {
 		super();
+		this.dId = dId;
+		this.dName = dName;
 		this.eId = eId;
 		this.eName = eName;
 		this.eEmail = eEmail;
-		this.ePassword = ePassword;
 		this.eAddress = eAddress;
 		this.eMobile = eMobile;
 		this.eSalary = eSalary;
-		this.eDId = eDId;
-		this.eDName = eDName;
 	}
 
 
+
+	public int getdId() {
+		return dId;
+	}
+
+
+
+	public void setdId(int dId) {
+		this.dId = dId;
+	}
+
+
+
+	public String getdName() {
+		return dName;
+	}
+
+
+
+	public void setdName(String dName) {
+		this.dName = dName;
+	}
 
 
 
@@ -44,9 +63,11 @@ public class Employee {
 	}
 
 
+
 	public void seteId(int eId) {
 		this.eId = eId;
 	}
+
 
 
 	public String geteName() {
@@ -54,9 +75,11 @@ public class Employee {
 	}
 
 
+
 	public void seteName(String eName) {
 		this.eName = eName;
 	}
+
 
 
 	public String geteEmail() {
@@ -64,19 +87,11 @@ public class Employee {
 	}
 
 
+
 	public void seteEmail(String eEmail) {
 		this.eEmail = eEmail;
 	}
 
-
-	public String getePassword() {
-		return ePassword;
-	}
-
-
-	public void setePassword(String ePassword) {
-		this.ePassword = ePassword;
-	}
 
 
 	public String geteAddress() {
@@ -84,9 +99,11 @@ public class Employee {
 	}
 
 
+
 	public void seteAddress(String eAddress) {
 		this.eAddress = eAddress;
 	}
+
 
 
 	public String geteMobile() {
@@ -94,9 +111,11 @@ public class Employee {
 	}
 
 
+
 	public void seteMobile(String eMobile) {
 		this.eMobile = eMobile;
 	}
+
 
 
 	public int geteSalary() {
@@ -104,39 +123,18 @@ public class Employee {
 	}
 
 
+
 	public void seteSalary(int eSalary) {
 		this.eSalary = eSalary;
 	}
 
 
-	public int geteDId() {
-		return eDId;
-	}
-
-	public void seteDId(int eDId) {
-		this.eDId = eDId;
-	}
-
-	public String geteDName() {
-		return eDName;
-	}
-
-	public void seteDName(String eDName) {
-		this.eDName = eDName;
-	}
 
 	@Override
 	public String toString() {
-		return "Employee [eId=" + eId + ", eName=" + eName + ", eEmail=" + eEmail + ", ePassword=" + ePassword
-				+ ", eAddress=" + eAddress + ", eMobile=" + eMobile + ", eSalary=" + eSalary + ", eDId=" + eDId
-				+ ", eDName=" + eDName + "]";
+		return "DepartmentEmployee [dId=" + dId + ", dName=" + dName + ", eId=" + eId + ", eName=" + eName + ", eEmail="
+				+ eEmail + ", eAddress=" + eAddress + ", eMobile=" + eMobile + ", eSalary=" + eSalary + "]";
 	}
-
-
-	
-	
-	
-	
 	
 	
 	

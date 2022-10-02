@@ -33,6 +33,8 @@ public class ViewEmployeeProfileUseCase {
 			System.out.println("Your Address is "+employee.geteAddress());
 			System.out.println("Your Mobile no. is "+employee.geteMobile());
 			System.out.println("Your Salary is "+employee.geteSalary());
+			System.out.println("Your department id is "+employee.geteDId());
+			System.out.println("Your department name is "+employee.geteDName());
 			
 			
 		} catch (EmployeeException e) {
