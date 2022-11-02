@@ -9,7 +9,7 @@ import com.hrds.exceptions.AdminException;
 
 public class AdminLoginUseCase {
 
-	public static void main(String[] args) {
+	public static boolean main(String[] args) {
 		
 		Scanner sc= new Scanner(System.in);
 		
@@ -25,11 +25,13 @@ public class AdminLoginUseCase {
 			Admin admin = dao.loginAdmin(email,pass);
 			
 			System.out.println("Welcome  , Hi "+admin.getaName());
-			System.out.println(admin);
+//			System.out.println(admin);
+			return true;
 			
 		} catch (AdminException e) {
 			
 			System.out.println(e.getMessage());
+			return false;
 		}
 		
 		

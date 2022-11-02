@@ -13,7 +13,7 @@ import com.hrds.exceptions.EmployeeException;
 
 public class EmployeeLoginUseCase {
 
-	public static void main(String[] args) {
+	public static boolean main(String[] args) {
 		
         Scanner sc= new Scanner(System.in);
 		
@@ -30,10 +30,12 @@ public class EmployeeLoginUseCase {
 			
 			System.out.println("Welcome  , Hi "+employee.geteEmail());
 			System.out.println("Your employee id is "+employee.geteId());
+			return true;
 			
 		} catch (EmployeeException e) {
 			
 			System.out.println(e.getMessage());
+			return false;
 		}
 
 	}
